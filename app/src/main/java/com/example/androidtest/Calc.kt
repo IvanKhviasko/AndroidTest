@@ -1,5 +1,11 @@
 package com.example.androidtest
 
+fun main() {
+    val line = "2+2*2"
+    Calculate(line)
+    println(line + "=" + popVal())
+}
+
 var ptrL = 0
 var ptrOp = 0
 var ptrVal = 0
@@ -139,8 +145,3 @@ fun parse(Formula: String) {
     if (Tmp.length > 0) Lex[ptrL] = Tmp
 }
 
-fun main() {
-    val line = "2+2*2"
-    Calculate(line)
-    println(line + "=" + popVal())
-}
