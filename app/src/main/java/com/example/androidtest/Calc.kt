@@ -65,7 +65,7 @@ fun execFun() {
 fun recCalculate(F: String) {
     var curr: String?
     var top: String?
-    parse(F)
+    formulaParse(F)
 
     for (i in 0..ptrL) {
         arrayLex[i].also { curr = it }
@@ -105,7 +105,7 @@ fun recCalculate(F: String) {
 }
 
 
-fun parse(Formula: String) {
+fun formulaParse(Formula: String) {
     var s: Char
     var parseTMP = ""
     arrayLex = arrayOfNulls(200)
