@@ -38,7 +38,7 @@ fun popVal(): String? {
     return valStack[--ptrVal]
 }
 
-fun exec() {
+fun execFun() {
     val a1: Double
     val a2: Double
     var r: Double
@@ -81,7 +81,7 @@ fun recCalculate(F: String) {
                     if (simPrty(curr) > simPrty(top)) {
                         pushOp(curr)
                     } else {
-                        exec()
+                        execFun()
                         pushOp(curr)
                     }
                 }
@@ -93,14 +93,14 @@ fun recCalculate(F: String) {
                     popOp()
                     break
                 }
-                exec()
+                execFun()
             }
             else -> pushVal(curr)
         }
     }
 
     while (ptrOp != 0) {
-        exec()
+        execFun()
     }
 }
 
