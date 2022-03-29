@@ -1,20 +1,13 @@
-package com.example.androidtest
-
-fun main() {
-    val line = "2+2*2"
-    Calculate(line)
-    println(line + "=" + popVal())
-}
+import kotlin.math.pow
 
 var ptrL = 0
 var ptrOp = 0
 var ptrVal = 0
-
-var Lex = arrayOfNulls<String>(200)
+var arrayLex = arrayOfNulls<String>(200)
 var opStack = arrayOfNulls<String>(200)
 var valStack = arrayOfNulls<String>(200)
 
-fun Prty(o: String?): Int {
+fun simPrty(o: String?): Int {
     var r = -1
     when (o) {
         "(" -> r = 0
@@ -49,14 +42,9 @@ fun exec() {
     val a1: Double
     val a2: Double
     var r: Double
-    var v1: String?
-    val v2: String?
-    val op: String?
-
-    v2 = popVal()
-    v1 = popVal()
-    op = popOp()
-
+    val v2: String? = popVal()
+    var v1: String? = popVal()
+    val op: String? = popOp()
     a1 = v1!!.toDouble()
     a2 = v2!!.toDouble()
 
@@ -67,30 +55,30 @@ fun exec() {
         "-" -> r = a1 - a2
         "*" -> r = a1 * a2
         "/" -> r = a1 / a2
-        "^" -> r = Math.pow(a1, a2)
+        "^" -> r = a1.pow(a2)
     }
-
-    v1 = java.lang.Double.toString(r)//?
+    v1 = r.toString()
     pushVal(v1)
 }
 
 
-fun Calculate(F: String) {
+fun recCalculate(F: String) {
     var curr: String?
     var top: String?
     parse(F)
 
     for (i in 0..ptrL) {
-        curr = Lex[i]
+        arrayLex[i].also { curr = it }
         when (curr) {
             "(" -> pushOp(curr)
-
             "+", "-", "*", "/", "^" -> {
                 if (ptrOp == 0) {
                     pushOp(curr)
                 } else {
+
                     top = peekOp()
-                    if (Prty(curr) > Prty(top)) {
+
+                    if (simPrty(curr) > simPrty(top)) {
                         pushOp(curr)
                     } else {
                         exec()
@@ -102,7 +90,7 @@ fun Calculate(F: String) {
             ")" -> while (true) {
                 top = peekOp()
                 if (top == "(") {
-                    top = popOp()
+                    popOp()
                     break
                 }
                 exec()
@@ -119,29 +107,31 @@ fun Calculate(F: String) {
 
 fun parse(Formula: String) {
     var s: Char
-    var i: Int
-    var Tmp = ""
-
-    Lex = arrayOfNulls(200)
-
+    var parseTMP = ""
+    arrayLex = arrayOfNulls(200)
     ptrL = 0
-    i = 0
+    var i = 0
     while (i < Formula.length) {
         s = Formula[i]
         when (s) {
             '+', '-', '*', '^', '/', '(', ')' -> {
-                if (Tmp.length > 0) {
-                    Lex[ptrL++] = Tmp
-                    Tmp = ""
+                if (parseTMP.isNotEmpty()) {
+                    parseTMP.also { arrayLex[ptrL++] = it }
+                    parseTMP = ""
                 }
-                Lex[ptrL++] = "" + s
+                arrayLex[ptrL++] = "" + s
             }
             ' ' -> {
             }
-            else -> Tmp = Tmp + s
+            else -> parseTMP += s
         }
         i++
     }
-    if (Tmp.length > 0) Lex[ptrL] = Tmp
+    if (parseTMP.isNotEmpty()) arrayLex[ptrL] = parseTMP
 }
 
+fun main() {
+    val line = "1+2-3+4"
+    recCalculate(line)
+    println(line + "=" + popVal())
+}
