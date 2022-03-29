@@ -131,7 +131,7 @@ fun parse(Formula: String) {
 }
 
 fun main() {
-    val line = "1+2-3+4"
+    val line = "(1+2)*3+4"
     recCalculate(line)
     println(line + "=" + popVal())
 }
