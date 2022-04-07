@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import calculateLine
 import com.example.androidtest.databinding.FragmentFirstBinding
-import popVal
-import recCalculate
+import ptrVal
+import valStack
 
 class FirstFragment : Fragment() {
 
@@ -19,6 +20,7 @@ class FirstFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         return FragmentFirstBinding.inflate(inflater, container, false)
             .also { _binding = it }
             .root
@@ -94,8 +96,10 @@ class FirstFragment : Fragment() {
             buttonEquals.setOnClickListener {
                 try {
                     val actualLine = mathOperation.text.toString()
-                    recCalculate(actualLine)
-                    mathOperation.text = popVal()
+                    calculateLine(actualLine)
+
+                    mathOperation.text = (valStack[--ptrVal])
+
                 } catch (e: Exception) {
                     android.widget.Toast.makeText(
                         root.context,
@@ -105,6 +109,7 @@ class FirstFragment : Fragment() {
                         .show()
                 }
             }
+
         }
     }
 
