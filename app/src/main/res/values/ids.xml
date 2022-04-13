@@ -22,5 +22,6 @@
     <item name="buttonPoint" type="id" />
     <item name="buttonMultiply" type="id" />
     <item name="recycleView" type="id" />
+    <item name="recycle_view_calc_list" type="id" />
     <item name="recycle_view" type="id" />
 </resources>

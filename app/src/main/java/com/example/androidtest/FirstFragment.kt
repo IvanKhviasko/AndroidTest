@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import calculateLine
 import com.example.androidtest.databinding.FragmentFirstBinding
 import ptrVal
@@ -30,6 +31,8 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
+            recycleView.layoutManager = LinearLayoutManager(view.context)
+            recycleView.adapter = NotesAdapter()
 
             fun setTextFields(str: String) {
                 mathOperation.append(str)
@@ -97,9 +100,9 @@ class FirstFragment : Fragment() {
                 try {
                     val actualLine = mathOperation.text.toString()
                     calculateLine(actualLine)
-
                     mathOperation.text = (valStack[--ptrVal])
-
+                    val lastOperationFragment = (actualLine+"="+(valStack[--ptrVal]).toString())
+//                    addItem(lastOperationFragment)
                 } catch (e: Exception) {
                     android.widget.Toast.makeText(
                         root.context,
@@ -109,7 +112,6 @@ class FirstFragment : Fragment() {
                         .show()
                 }
             }
-
         }
     }
 
@@ -118,3 +120,7 @@ class FirstFragment : Fragment() {
         _binding = null
     }
 }
+
+
+
+
