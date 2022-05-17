@@ -3,26 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/HW Android Studio/AndroidTest/app/src/main/res/layout/activity_main.xml" value="0.1111111111111111" />
-        <entry key="..\:/HW Android Studio/AndroidTest/app/src/main/res/layout/content_main.xml" value="0.1" />
-        <entry key="..\:/HW Android Studio/AndroidTest/app/src/main/res/layout/fragment_details.xml" value="0.33" />
-        <entry key="..\:/HW Android Studio/AndroidTest/app/src/main/res/layout/fragment_first.xml" value="0.3625" />
-        <entry key="..\:/HW Android Studio/AndroidTest/app/src/main/res/layout/fragment_list.xml" value="0.28888888888888886" />
-        <entry key="..\:/HW Android Studio/AndroidTest/app/src/main/res/layout/fragment_second.xml" value="0.3625" />
-        <entry key="..\:/HW Android Studio/AndroidTest/app/src/main/res/layout/item_loading.xml" value="0.1" />
-        <entry key="..\:/HW Android Studio/AndroidTest/app/src/main/res/layout/item_user.xml" value="0.1" />
-        <entry key="..\:/HW Android Studio/AndroidTest/app/src/main/res/menu/menu_list.xml" value="0.22" />
-        <entry key="..\:/HW Android Studio/AndroidTest/app/src/main/res/menu/menu_main.xml" value="0.1" />
-        <entry key="..\:/Vlad/Lesson11/HW/AndroidTest/app/src/main/res/layout/activity_main.xml" value="0.16302083333333334" />
-        <entry key="..\:/Vlad/Lesson11/HW/AndroidTest/app/src/main/res/layout/fragment_details.xml" value="0.1" />
-        <entry key="..\:/Vlad/Lesson11/HW/AndroidTest/app/src/main/res/layout/fragment_list.xml" value="0.1" />
-        <entry key="..\:/Vlad/Lesson11/HW/AndroidTest/app/src/main/res/layout/item_country.xml" value="0.1" />
-        <entry key="..\:/Vlad/Lesson11/HW/AndroidTest/app/src/main/res/layout/item_loading.xml" value="0.33" />
-        <entry key="..\:/Vlad/Lesson11/HW/AndroidTest2/app/src/main/res/layout/activity_main.xml" value="0.32314814814814813" />
-        <entry key="..\:/Vlad/Lesson11/HW/AndroidTest2/app/src/main/res/layout/fragment_details.xml" value="0.15833333333333333" />
-        <entry key="..\:/Vlad/Lesson11/HW/AndroidTest2/app/src/main/res/layout/fragment_list.xml" value="0.3611111111111111" />
-        <entry key="..\:/Vlad/Lesson11/HW/AndroidTest2/app/src/main/res/layout/item_country.xml" value="0.3074074074074074" />
-        <entry key="..\:/Vlad/Lesson11/HW/AndroidTest2/app/src/main/res/layout/item_loading.xml" value="0.36666666666666664" />
+        <entry key="..\:/Vlad/Lesson17/SOS3/AndroidTest/app/src/main/res/layout/activity_main.xml" value="0.36102564102564105" />
+        <entry key="..\:/Vlad/Lesson17/SOS3/AndroidTest/app/src/main/res/layout/fragment_details.xml" value="0.36102564102564105" />
+        <entry key="..\:/Vlad/Lesson17/SOS3/AndroidTest/app/src/main/res/layout/fragment_list.xml" value="0.36102564102564105" />
+        <entry key="..\:/Vlad/Lesson17/SOS3/AndroidTest/app/src/main/res/layout/item_country.xml" value="0.36102564102564105" />
+        <entry key="..\:/Vlad/Lesson17/SOS3/AndroidTest/app/src/main/res/layout/item_loading.xml" value="0.36102564102564105" />
+        <entry key="..\:/Vlad/Lesson17/SOS3/AndroidTest/app/src/main/res/menu/menu_list.xml" value="0.3625" />
       </map>
     </option>
   </component>

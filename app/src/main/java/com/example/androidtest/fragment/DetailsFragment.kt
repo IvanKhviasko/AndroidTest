@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
 import coil.load
 import com.example.androidtest.databinding.FragmentDetailsBinding
-import com.example.androidtest.model.Countries
+import com.example.androidtest.model.CountryDetails
 import com.example.androidtest.retrofit.RetrofitService
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
@@ -25,7 +25,7 @@ class DetailsFragment : Fragment() {
             "View was destroyed"
         }
 
-    val args: DetailsFragmentArgs by navArgs()
+    private val args: DetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,30 +55,27 @@ class DetailsFragment : Fragment() {
     }
 
     private fun loadCountryDetails() {
-//        val countriesLoad = RetrofitService.CountryApi.getCountryDetails(args.name)
-//        val countryOne= countriesLoad[0]
-
-        //Тут приходит массив с одним значением я не могу его правильно вставить в фрагмент
-        RetrofitService.CountryApi.getCountryDetails(args.name)
-            .enqueue(object : Callback <List<Countries>> {
+        RetrofitService.countryApi.getCountryDetails(args.name)
+            .enqueue(object : Callback <CountryDetails> {
                 override fun onResponse(
-                    call: Call <List<Countries>>,
-                    response: Response <List<Countries>>
+                    call: Call<CountryDetails>,
+                    response: Response<CountryDetails>
                 ) {
                     if (response.isSuccessful) {
-                        val newList = response.body() ?: return
+                        val one = response.body()
+                        val country = one!!.countries[0]
                         with(binding) {
-                            flag.load(newList[0].flag)
-                            name.text = newList[0].name
-                            area.text = "Area: ${newList[0].area}"
-                            population.text = "Population: ${newList[0].population}"
+                            flag.load(country.flag)
+                            name.text = country.name
+                            area.text = "Area: ${country.area}"
+                            population.text = "Population: ${country.population}"
                         }
                     } else {
                         handleErrors(response.errorBody()?.string() ?: "")
                     }
                 }
 
-                override fun onFailure(call: Call <List<Countries>>, t: Throwable) {
+                override fun onFailure(call: Call <CountryDetails>, t: Throwable) {
                     handleErrors(t.message ?: "")
                 }
             })
@@ -91,10 +88,3 @@ class DetailsFragment : Fragment() {
             .show()
     }
 }
-
-private fun <T> Call<T>.enqueue(callback: Callback<List<Countries>>) {//???
-
-}
-
-
-

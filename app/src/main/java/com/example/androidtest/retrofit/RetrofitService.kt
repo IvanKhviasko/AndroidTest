@@ -8,7 +8,7 @@ import retrofit2.create
 object RetrofitService {
 
     private val retrofit by lazy(LazyThreadSafetyMode.NONE) { provideRetrofit() }
-    val CountryApi by lazy(LazyThreadSafetyMode.NONE) {
+    val countryApi by lazy(LazyThreadSafetyMode.NONE) {
         retrofit.create<CountryApi>()
     }
 

@@ -6,7 +6,6 @@ data class CountryDetails(
     val countries: List<Countries>
 )
 
-
 data class Countries(
     val name: String,
     @SerializedName("flag")

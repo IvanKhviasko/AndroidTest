@@ -88,7 +88,7 @@ class ListFragment : Fragment() {
             onLoadingFinished()
         }
 
-        RetrofitService.CountryApi.getCountry()
+        RetrofitService.countryApi.getCountries()
             .enqueue(object : Callback<List<Country>> {
                 override fun onResponse(
                     call: Call<List<Country>>,
