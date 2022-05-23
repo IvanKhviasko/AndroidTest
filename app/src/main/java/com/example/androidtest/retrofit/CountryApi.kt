@@ -1,5 +1,6 @@
 package com.example.androidtest.retrofit
 
+import com.example.androidtest.model.Countries
 import com.example.androidtest.model.Country
 import com.example.androidtest.model.CountryDetails
 import retrofit2.Call
@@ -16,5 +17,5 @@ interface CountryApi {
     @GET("name/{name}")
     fun getCountryDetails(
         @Path("name") name: String
-    ): Call<CountryDetails>
+    ): Call <List<Countries>>
 }

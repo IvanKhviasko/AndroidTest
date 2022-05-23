@@ -10,6 +10,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
 import coil.load
 import com.example.androidtest.databinding.FragmentDetailsBinding
+import com.example.androidtest.model.Countries
+import com.example.androidtest.model.Country
 import com.example.androidtest.model.CountryDetails
 import com.example.androidtest.retrofit.RetrofitService
 import com.google.android.material.snackbar.Snackbar
@@ -56,26 +58,26 @@ class DetailsFragment : Fragment() {
 
     private fun loadCountryDetails() {
         RetrofitService.countryApi.getCountryDetails(args.name)
-            .enqueue(object : Callback <CountryDetails> {
+            .enqueue(object : Callback <List<Countries>> {
                 override fun onResponse(
-                    call: Call<CountryDetails>,
-                    response: Response<CountryDetails>
+                    call: Call<List<Countries>>,
+                    response: Response<List<Countries>>
                 ) {
                     if (response.isSuccessful) {
                         val one = response.body()
-                        val country = one!!.countries[0]
+                        val country = one?.get(0)
                         with(binding) {
-                            flag.load(country.flag)
-                            name.text = country.name
-                            area.text = "Area: ${country.area}"
-                            population.text = "Population: ${country.population}"
+                            flag.load(country?.flag)
+                            name.text = country?.name
+                            area.text = "Area: ${country?.area}"
+                            population.text = "Population: ${country?.population}"
                         }
                     } else {
                         handleErrors(response.errorBody()?.string() ?: "")
                     }
                 }
 
-                override fun onFailure(call: Call <CountryDetails>, t: Throwable) {
+                override fun onFailure(call: Call <List<Countries>>, t: Throwable) {
                     handleErrors(t.message ?: "")
                 }
             })
